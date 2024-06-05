@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+    <title>TensorFlow.js Universal Sentence Encoder</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id='main'>
+        <h1>Universal Sentence Encoder Model</h1>
+        <div id="description">This demo is taken from the 
+            
+            <a target="_blank"
+                href="https://colab.sandbox.google.com/github/tensorflow/hub/blob/master/examples/colab/semantic_similarity_with_tf_hub_universal_encoder_lite.ipynb#scrollTo=_GSCW5QIBKVe">TensorFlow
+                Hub Universal Sentence Encoder lite colab</a>. It shows the model's ability to group sentences by
+            semantic
+            similarity usings their embeddings. The matrix on the right shows self-similarity scores (dot products)
+            between
+            the embeddings for the sentences on the left. The redder the cell, the higher the similarity score.</div>
+        <div id="loading">
+            Loading the model...
+        </div>
+        <div id="container">
+            <div id="sentences-container"></div>
+            <div id="self-similarity-matrix">
+                <div class="labels y-axis"></div>
+                <div class="labels x-axis"></div>
+                <canvas></canvas>
+            </div>
+        </div>
+    </div>
+    <div id='main'>
+        <h1>Universal Sentence Encoder QnA demo</h1>
+        <div id="loadingQnA">
+            Loading the model...
+        </div>
+        <div id="description">
+            <h2>Encode Question and Answers</h2>
+            <h3>Question</h3>
+            <div>What is your favorite color?</div><br />
+            <h3>Answer 1</h3>
+            <div>My favorite color is blue.</div>
+            <div>Score: <span id="answer_1"></span></div><br />
+            <h3>Answer 2</h3>
+            <div>I prefer green over any other color.</div>
+            <div>Score: <span id="answer_2"></span></div><br />
+            <h3>Answer 3</h3>
+            <div>Red is the color that I like the most.</div>
+            <div>Score: <span id="answer_3"></span></div><br />
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
