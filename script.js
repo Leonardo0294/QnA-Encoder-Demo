@@ -31,11 +31,10 @@ const init = async () => {
   const model = await use.load();
   document.querySelector('#loading').style.display = 'none';
   
-  //se renderizan las oraciones en el html
+  // Render sentences in HTML
   renderSentences();
 
-  //Se obtienen los embeddings (representaciones vectoriales) 
-  //de las oraciones usando el modelo cargado.
+  // Get embeddings of the sentences using the loaded model
   const embeddings = await model.embed(sentences);
   const matrixSize = 250;
   const cellSize = matrixSize / sentences.length;
@@ -48,9 +47,7 @@ const init = async () => {
   const xLabelsContainer = document.querySelector('.x-axis');
   const yLabelsContainer = document.querySelector('.y-axis');
 
-  //se calcula la similitud entre todas las combinaciones
-  // y se va coloreando la matriz de acuerdo a la similitud
-  // y se renderizan en el canvas
+  // Compute similarity between all combinations and render matrix in the canvas
   for (let i = 0; i < sentences.length; i++) {
     const labelXDom = document.createElement('div');
     const labelYDom = document.createElement('div');
@@ -79,30 +76,49 @@ const init = async () => {
     }
   }
 };
+
 const initQnA = async () => {
-  const input = {
-    //preguntas
-    queries: ['How are you feeling today?'],
-    //respuestas
-    responses: [
-      'I\'m not feeling very well.', 'Beijing is the capital of China.',
-      'You have five fingers on your hand.'
-    ]
-  };
+  const questionsAndAnswers = [
+    {
+      question: 'How are you feeling today?',
+      answers: [
+        'I\'m not feeling very well.',
+        'Beijing is the capital of China.',
+        'You have five fingers on your hand.'
+      ],
+      answerIds: ['answer_1', 'answer_2', 'answer_3']
+    },
+    {
+      question: 'What is your favorite type of music?',
+      answers: [
+        'I love listening to classical music.',
+        'The Great Wall of China is very long.',
+        'Elephants are the largest land animals.'
+      ],
+      answerIds: ['answer_4', 'answer_5', 'answer_6']
+    }
+  ];
+
   const model = await use.loadQnA();
   document.querySelector('#loadingQnA').style.display = 'none';
-  let result = model.embed(input);
-  const dp = tf.matMul(result['queryEmbedding'], result['responseEmbedding'],
-      false, true).dataSync();
-  for (let i = 0; i < dp.length; i++) {
-    document.getElementById(`answer_${i + 1}`).textContent =
-        `${dp[i]}`
+
+  for (const qa of questionsAndAnswers) {
+    const input = {
+      queries: [qa.question],
+      responses: qa.answers
+    };
+    let result = await model.embed(input);
+    const dp = tf.matMul(result['queryEmbedding'], result['responseEmbedding'], false, true).dataSync();
+    for (let i = 0; i < dp.length; i++) {
+      document.getElementById(qa.answerIds[i]).textContent = `${dp[i]}`;
+    }
   }
 };
+
 init();
 initQnA();
 
-//funcion para renderizar las oraciones en el html
+// Function to render sentences in HTML
 const renderSentences = () => {
   sentences.forEach((sentence, i) => {
     const sentenceDom = document.createElement('div');

@@ -1,0 +1,59 @@
+/* Estilos para el cuerpo del documento */
+body {
+    font-family: Arial, sans-serif; /* Cambiar la fuente del texto */
+    background-color: #f0f8ff; /* Fondo celeste */
+    color: #333; /* Texto oscuro */
+}
+
+/* Estilos para los encabezados h1 y h2 */
+h1, h2, h3 {
+    color: #0047ab; /* Azul */
+}
+
+/* Estilos para los enlaces */
+a {
+    color: #007bff; /* Azul brillante */
+    text-decoration: none; /* Sin subrayado */
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+
+/* Estilos para los contenedores principales */
+#main {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Estilos para los contenedores de descripción */
+#description {
+    margin-bottom: 20px;
+}
+
+/* Estilos para los elementos de lista */
+ul, ol {
+    margin-left: 20px;
+}
+
+/* Estilos para los elementos de respuesta */
+span {
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilos para los botones */
+button {
+    background-color: #007bff; /* Fondo azul brillante */
+    color: #fff; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 8px 16px; /* Relleno */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color azul más oscuro al pasar el mouse */
+}
