@@ -1,18 +1,26 @@
 /* Estilos para el cuerpo del documento */
 body {
     font-family: Arial, sans-serif; /* Cambiar la fuente del texto */
-    background-color:greenyellow ; /* Fondo celeste */
+    background-image: url('neuronalgif.gif'); /* Imagen de fondo */
+    background-size: cover; /* Abarcar toda la pantalla */
+    background-position: center; /* Centrar la imagen */
     color: #333; /* Texto oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 /* Estilos para los encabezados h1 y h2 */
 h1, h2, h3 {
-    color: gre; /* Azul */
+    color: #006400; /* Verde oscuro */
+    text-align: center; /* Centrar el texto */
 }
 
 /* Estilos para los enlaces */
 a {
-    color:green; /* Azul brillante */
+    color: #006400; /* Verde oscuro */
     text-decoration: none; /* Sin subrayado */
 }
 
@@ -20,18 +28,21 @@ a:hover {
     text-decoration: underline; /* Subrayado al pasar el mouse */
 }
 
-/* Estilos para los contenedores principales */
+/* Estilos para el contenedor principal */
 #main {
-    background-color: #fff; /* Fondo blanco */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 20px;
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    max-width: 600px; /* Ancho máximo */
+    width: 100%; /* Abarcar todo el ancho disponible */
+    text-align: center; /* Centrar el contenido */
 }
 
-/* Estilos para los contenedores de descripción */
+/* Estilos para el contenedor de descripción */
 #description {
-    margin-bottom: 5%;
+    margin-bottom: 20px;
 }
 
 /* Estilos para los elementos de lista */
@@ -46,7 +57,7 @@ span {
 
 /* Estilos para los botones */
 button {
-    background-color:green; /* Fondo azul brillante */
+    background-color: #006400; /* Fondo verde oscuro */
     color: #ffffff; /* Texto blanco */
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
@@ -55,5 +66,19 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Color azul más oscuro al pasar el mouse */
+    background-color: #004d00; /* Verde más oscuro al pasar el mouse */
+}
+
+/* Estilos para el contenedor de entrada */
+#input-container {
+    margin-bottom: 20px;
+}
+
+/* Estilos para el input de texto */
+#user-sentence {
+    padding: 10px;
+    width: calc(100% - 22px); /* Ajustar al padding */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }

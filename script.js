@@ -1,28 +1,30 @@
-import '@tensorflow/tfjs-backend-cpu';
-import '@tensorflow/tfjs-backend-webgl';
+// Importación de las bibliotecas necesarias
+import '@tensorflow/tfjs-backend-cpu'; // Importa el backend de TensorFlow.js para CPU
+import '@tensorflow/tfjs-backend-webgl'; // Importa el backend de TensorFlow.js para WebGL
 
-import * as use from '@tensorflow-models/universal-sentence-encoder';
-import * as tf from '@tensorflow/tfjs-core';
-import { interpolateReds } from 'd3-scale-chromatic';
+import * as use from '@tensorflow-models/universal-sentence-encoder'; // Importa el modelo Universal Sentence Encoder
+import * as tf from '@tensorflow/tfjs-core'; // Importa TensorFlow.js Core
+import { interpolateReds } from 'd3-scale-chromatic'; // Importa una función de la biblioteca d3-scale-chromatic
 
+// Conjunto de oraciones de ejemplo para comparar
 const sentences = [
-  'I like my phone.', 'Your cellphone looks great.', 'How old are you?',
-  'What is your age?', 'An apple a day, keeps the doctors away.',
-  'Eating strawberries is healthy.'
+  'I like drinking mate.', 'Your cellphone is awesome.', 'How old are you?',
+  'What’s your age?', 'I’m from Córdoba, capital.', 'Going to the stadium is the best.'
 ];
 
-let model;
+let model; // Variable para almacenar el modelo USE
 
+// Función de inicialización
 const init = async () => {
-  model = await use.load();
-  document.querySelector('#loading').style.display = 'none';
-  document.querySelector('#container').style.display = 'block';
+  model = await use.load(); // Carga el modelo USE
+  document.querySelector('#loading').style.display = 'none'; // Oculta el elemento de carga
+  document.querySelector('#container').style.display = 'block'; // Muestra el contenedor de la aplicación
   
-  // Render sentences in HTML
+  // Renderiza las oraciones en HTML
   renderSentences();
 };
 
-// Function to render sentences in HTML
+// Función para renderizar las oraciones en HTML
 const renderSentences = () => {
   sentences.forEach((sentence, i) => {
     const sentenceDom = document.createElement('div');
@@ -31,35 +33,37 @@ const renderSentences = () => {
   });
 };
 
+// Función para comparar la oración ingresada por el usuario con las oraciones de ejemplo
 const compareSentence = async () => {
   if (!model) {
-    alert('Model is not loaded yet.');
+    alert('El modelo no se ha cargado aún.'); // Alerta si el modelo no se ha cargado
     return;
   }
-  const userSentence = document.getElementById('user-sentence').value;
+  const userSentence = document.getElementById('user-sentence').value; // Obtiene la oración ingresada por el usuario
   if (!userSentence) {
-    alert('Please enter a sentence');
+    alert('Por favor, ingresa una oración'); // Alerta si no se ha ingresado ninguna oración
     return;
   }
 
   try {
-    const embeddings = await model.embed([userSentence, ...sentences]);
-    const userEmbedding = tf.slice(embeddings, [0, 0], [1, -1]);
-    const resultsContainer = document.getElementById('similarity-scores');
-    resultsContainer.innerHTML = '<h3>Similarity Scores:</h3>';
+    const embeddings = await model.embed([userSentence, ...sentences]); // Incorpora la oración del usuario junto con las oraciones de ejemplo
+    const userEmbedding = tf.slice(embeddings, [0, 0], [1, -1]); // Obtiene la incrustación de la oración del usuario
+    const resultsContainer = document.getElementById('similarity-scores'); // Obtiene el contenedor de los resultados
+    resultsContainer.innerHTML = '<h3>Puntuaciones de similitud:</h3>'; // Agrega un encabezado a los resultados
 
     for (let i = 0; i < sentences.length; i++) {
-      const sentenceEmbedding = tf.slice(embeddings, [i + 1, 0], [1, -1]);
-      const score = tf.matMul(userEmbedding, sentenceEmbedding, false, true).dataSync();
+      const sentenceEmbedding = tf.slice(embeddings, [i + 1, 0], [1, -1]); // Obtiene la incrustación de una oración de ejemplo
+      const score = tf.matMul(userEmbedding, sentenceEmbedding, false, true).dataSync(); // Calcula el producto punto para medir la similitud
       const scoreDiv = document.createElement('div');
-      scoreDiv.textContent = `Sentence ${i + 1}: ${score[0]}`;
-      resultsContainer.appendChild(scoreDiv);
+      scoreDiv.textContent = `Oración ${i + 1}: ${score[0]}`; // Muestra la puntuación de similitud en el DOM
+      resultsContainer.appendChild(scoreDiv); // Agrega el elemento al contenedor de resultados
     }
   } catch (error) {
-    console.error('Error comparing sentence:', error);
+    console.error('Error comparando oraciones:', error); // Maneja los errores
   }
 };
 
-init();
+init(); // Inicializa la aplicación cuando se carga la página
 
+// Agrega un event listener al botón de comparación para activar la función de comparación de oraciones
 document.getElementById('compare-btn').addEventListener('click', compareSentence);
