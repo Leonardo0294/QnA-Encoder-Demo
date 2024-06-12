@@ -3,29 +3,25 @@
 <html>
 
 <head>
-    <title>TensorFlow.js Universal Sentence Encoder</title>
+    <title>Modelo Universal Sentence Encoder</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
     <div id='main'>
-        <h1>Universal Sentence Encoder Model</h1>
-        <div id="description">This demo is taken from the 
+        <h1>Modelo Universal de Codificación de Oraciones con TensorFlow.js</h1>
+        <div id="description">Esta demostración está tomada del
             <a target="_blank"
-                href="https://colab.sandbox.google.com/github/tensorflow/hub/blob/master/examples/colab/semantic_similarity_with_tf_hub_universal_encoder_lite.ipynb#scrollTo=_GSCW5QIBKVe">TensorFlow
-                Hub Universal Sentence Encoder lite colab</a>. It shows the model's ability to group sentences by
-            semantic
-            similarity usings their embeddings. The matrix on the right shows self-similarity scores (dot products)
-            between
-            the embeddings for the sentences on the left. The redder the cell, the higher the similarity score.</div>
+                href="https://colab.sandbox.google.com/github/tensorflow/hub/blob/master/examples/colab/semantic_similarity_with_tf_hub_universal_encoder_lite.ipynb#scrollTo=_GSCW5QIBKVe">Colab de TensorFlow
+                Hub Universal Sentence Encoder lite</a>. Muestra la capacidad del modelo para agrupar las oraciones por similitud semántica usando sus incrustaciones. La matriz a la derecha muestra las puntuaciones de auto-similitud (productos de punto) entre las incrustaciones para las oraciones a la izquierda. Cuanto más roja sea la celda, mayor será la puntuación de similitud.</div>
         <div id="loading">
-            Loading the model...
+            Cargando el modelo...
         </div>
         <div id="container" style="display:none;">
             <div id="input-container">
-                <input type="text" id="user-sentence" placeholder="Enter a sentence">
-                <button id="compare-btn">Compare Sentence</button>
+                <input type="text" id="user-sentence" placeholder="Ingresa una oración">
+                <button id="compare-btn">Comparar Oración</button>
             </div>
             <div id="sentences-container"></div>
             <div id="similarity-scores"></div>
