@@ -22,46 +22,13 @@
         <div id="loading">
             Loading the model...
         </div>
-        <div id="container">
-            <div id="sentences-container"></div>
-            <div id="self-similarity-matrix">
-                <div class="labels y-axis"></div>
-                <div class="labels x-axis"></div>
-                <canvas></canvas>
+        <div id="container" style="display:none;">
+            <div id="input-container">
+                <input type="text" id="user-sentence" placeholder="Enter a sentence">
+                <button id="compare-btn">Compare Sentence</button>
             </div>
-        </div>
-    </div>
-    <div id='main'>
-        <h1>Universal Sentence Encoder QnA demo</h1>
-        <div id="loadingQnA">
-            Loading the model...
-        </div>
-        <div id="description">
-            <h2>Encode Question and Answers</h2>
-            <h3>Question</h3>
-            <div>What is your dream vacation destination?</div><br />
-            <h3>Answer 1</h3>
-            <div>My dream vacation destination is Japan.</div>
-            <div>Score: <span id="answer_1"></span></div><br />
-            <h3>Answer 2</h3>
-            <div>The capital of France is Paris.</div>
-            <div>Score: <span id="answer_2"></span></div><br />
-            <h3>Answer 3</h3>
-            <div>Water boils at 100 degrees Celsius.</div>
-            <div>Score: <span id="answer_3"></span></div><br />
-
-            <h2>Encode Another Question and Answers</h2>
-            <h3>Question</h3>
-            <div>What is your favorite type of music?</div><br />
-            <h3>Answer 1</h3>
-            <div>I love listening to classical music.</div>
-            <div>Score: <span id="answer_4"></span></div><br />
-            <h3>Answer 2</h3>
-            <div>The Great Wall of China is very long.</div>
-            <div>Score: <span id="answer_5"></span></div><br />
-            <h3>Answer 3</h3>
-            <div>Elephants are the largest land animals.</div>
-            <div>Score: <span id="answer_6"></span></div><br />
+            <div id="sentences-container"></div>
+            <div id="similarity-scores"></div>
         </div>
     </div>
     <script src="script.js"></script>
