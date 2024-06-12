@@ -1,18 +1,18 @@
 /* Estilos para el cuerpo del documento */
 body {
     font-family: Arial, sans-serif; /* Cambiar la fuente del texto */
-    background-color: #f0f8ff; /* Fondo celeste */
+    background-color:greenyellow ; /* Fondo celeste */
     color: #333; /* Texto oscuro */
 }
 
 /* Estilos para los encabezados h1 y h2 */
 h1, h2, h3 {
-    color: #0047ab; /* Azul */
+    color: gre; /* Azul */
 }
 
 /* Estilos para los enlaces */
 a {
-    color: #007bff; /* Azul brillante */
+    color:green; /* Azul brillante */
     text-decoration: none; /* Sin subrayado */
 }
 
@@ -31,7 +31,7 @@ a:hover {
 
 /* Estilos para los contenedores de descripción */
 #description {
-    margin-bottom: 20px;
+    margin-bottom: 5%;
 }
 
 /* Estilos para los elementos de lista */
@@ -46,8 +46,8 @@ span {
 
 /* Estilos para los botones */
 button {
-    background-color: #007bff; /* Fondo azul brillante */
-    color: #fff; /* Texto blanco */
+    background-color:green; /* Fondo azul brillante */
+    color: #ffffff; /* Texto blanco */
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
     padding: 8px 16px; /* Relleno */
